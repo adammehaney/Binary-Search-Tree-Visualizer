@@ -1,15 +1,54 @@
 ---
-interface Props {
-	title: string;
-	body: string;
-	href: string;
-}
-
-const { href, title, body } = Astro.props;
+import BSTNode from './BST_node.astro';
 ---
 
-<li class="link-card">
+<div class="tree">
+	<canvas id="main-canvas">
 
-</li>
+	</canvas>
+</div>
 <style>
+	.tree {
+		display: flex;
+		flex-direction: column;
+		gap: 50px;
+	}
+	div div {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
 </style>
+<script type="module">
+	const canvas = document.getElementById("main-canvas");
+	if (canvas.getContext) {
+		const ctx = canvas.getContext("2d");
+
+		ctx.fillStyle = "white";
+
+		drawNode(ctx, 75, 75);
+		drawNode(ctx, 100, 125);
+		drawNode(ctx, 50, 125);
+
+		connectPoints(ctx, 75, 75, 100, 125);
+		connectPoints(ctx, 75, 75, 50, 125);
+	}
+
+	function drawNode(ctx, x, y) {
+		ctx.beginPath();
+		ctx.arc(x, y, 15, 0, Math.PI * 2, true);
+
+		ctx.fill();
+	}
+	function connectPoints(ctx, x1, y1, x2, y2) {
+		ctx.beginPath();
+		ctx.moveTo(x1, y1);
+		ctx.lineTo(x2, y2);
+		ctx.stroke();
+
+		ctx.beginPath();
+		ctx.moveTo(x2, y2);
+		ctx.lineTo(x1, y1);
+		ctx.stroke();
+	}
+</script>
