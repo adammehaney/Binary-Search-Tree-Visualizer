@@ -160,6 +160,25 @@ const canvas = document.getElementById("main-canvas") as HTMLCanvasElement;
 			}
 		}
 	}
+	function deepRight(tree: BinaryTree) {
+		if (tree.getRight()) {
+			return deepRight(tree.getRight())
+		} else {
+			return tree.getRoot()
+		}
+	}
+	function remove(tree: BinaryTree, value: number) {
+		if (tree.getRoot() === value) {
+			tree.setRoot(deepRight(tree));
+		} else {
+			if (tree.getLeft()) {
+				remove(tree.getLeft(), value)
+			}
+			if (tree.getRight()) {
+				remove(tree.getRight(), value)
+			}
+		}
+	}
     function drawTree(ctx: CanvasRenderingContext2D, tree: BinaryTree, canvasWidth: number, scale: number, i=0, rootPosition: any=null) {          
         if (tree) {
             if (rootPosition === null) {
@@ -233,15 +252,25 @@ const canvas = document.getElementById("main-canvas") as HTMLCanvasElement;
 	
 			drawTree(ctx, tree, canvas.width, scale);
 
-			var number = document.getElementById('insert-form-input') as HTMLInputElement;
-			var numberForm = document.getElementById('insert-form') as HTMLElement;
+			var insertNumber = document.getElementById('insert-form-input') as HTMLInputElement;
+			var insertNumberForm = document.getElementById('insert-form') as HTMLElement;
+
+			var removeNumber = document.getElementById('remove-form-input') as HTMLInputElement;
+			var removeNumberForm = document.getElementById('remove-form') as HTMLElement;
 
 			// if (numberForm.addEventListener){
 				
 			// }
-			numberForm.addEventListener("submit", function (){
-				console.log(number.value);
-				insert(tree, parseInt(number.value))
+			insertNumberForm.addEventListener("submit", function (){
+				console.log(insertNumber.value);
+				insert(tree, parseInt(insertNumber.value))
+				drawTree(ctx, tree, canvas.width, scale);
+				updateTraversals(tree);
+			}, false);
+
+			removeNumberForm.addEventListener("submit", function (){
+				console.log(removeNumber.value);
+				remove(tree, parseInt(removeNumber.value))
 				drawTree(ctx, tree, canvas.width, scale);
 				updateTraversals(tree);
 			}, false);
