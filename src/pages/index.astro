@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import BST from '../components/BST.astro';
+import InfoPanel from '../components/infopanel.astro';
+import Button from '../components/button.astro';
 ---
 
 <Layout title="Welcome to Astro.">
@@ -8,6 +10,28 @@ import BST from '../components/BST.astro';
 		<h1>Binary Search Tree</h1>
 		<h2>Visualizer</h2>
 		<BST />
+		<InfoPanel>
+			<h2>Inserting into a Binary Tree</h2>
+			<form id="insert-form" onsubmit="return false;" method="post" name="myForm">
+				<label for="fname">Value you want to add: </label>
+				<input id="insert-form-input" type="text"  name="fname"><br><br>
+				<input type="submit" value="Submit">
+			</form>
+			<Button>Insert</Button>
+		</InfoPanel>
+		<InfoPanel>
+			<h2>PreOrder Representation</h2>
+			<code id="preorder-list"></code>
+			<Button>Preorder Traversals</Button>
+		</InfoPanel>
+		<InfoPanel>
+			<h2>InOrder Representation</h2>
+			<code id="inorder-list"></code>
+		</InfoPanel>
+		<InfoPanel>
+			<h2>PostOrder Representation</h2>
+			<code id="postorder-list"></code>
+		</InfoPanel>
 	</main>
 </Layout>
 

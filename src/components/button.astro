@@ -1,0 +1,32 @@
+---
+interface Props {
+    href?: string;
+    target?: string;
+}
+
+const {href, target } = Astro.props;
+---
+<a href={href} target={target}>
+    <slot />
+</a>
+<style>
+    a {
+        color: black;
+        font-weight: bold;
+        background-color: var(--secondary);
+        border-radius: var(--border-radius);
+        width: 30%;
+        padding: 10px;
+        margin-top: 30px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        transition-duration: 0.4s;
+        transition-timing-function: ease-in-out;
+    }
+
+    a:hover {
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        cursor: pointer;
+    }
+</style>
