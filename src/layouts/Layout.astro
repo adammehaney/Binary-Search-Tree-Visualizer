@@ -1,4 +1,6 @@
 ---
+import '@fontsource-variable/manrope';
+
 interface Props {
 	title: string;
 }
@@ -35,8 +37,8 @@ const { title } = Astro.props;
 		margin: 0;
 		padding: 0;
 	}
-	html {
-		font-family: system-ui, sans-serif;
+	html, input {
+		font-family: 'Manrope Variable', sans-serif;
 		background: var(--background);
 		/* background-size: 224px; */
 	}
@@ -53,9 +55,8 @@ const { title } = Astro.props;
 	}
 	h1, h2, h3, h4 {
 		text-transform: uppercase;
-		/* line-height: 0; */
 		text-align: left;
-		/* margin-bottom: 1em; */
+		vertical-align: middle;
 	}
 	h2, h3, h4 {
 		color: var(--secondary);

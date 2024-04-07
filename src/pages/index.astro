@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import BST from '../components/BST.astro';
 import InfoPanel from '../components/infopanel.astro';
 import Button from '../components/button.astro';
+import { Icon } from 'astro-icon/components'
 ---
 
 <Layout title="Welcome to Astro.">
@@ -10,28 +11,41 @@ import Button from '../components/button.astro';
 		<h1>Binary Search Tree</h1>
 		<h2>Visualizer</h2>
 		<BST />
-		<InfoPanel>
-			<h2>Inserting into a Binary Tree</h2>
-			<form id="insert-form" onsubmit="return false;" method="post" name="myForm">
-				<label for="fname">Value you want to add: </label>
-				<input id="insert-form-input" type="text"  name="fname"><br><br>
-				<input type="submit" value="Submit">
-			</form>
-			<Button>Insert</Button>
-		</InfoPanel>
-		<InfoPanel>
-			<h2>PreOrder Representation</h2>
-			<code id="preorder-list"></code>
-			<Button>Preorder Traversals</Button>
-		</InfoPanel>
-		<InfoPanel>
-			<h2>InOrder Representation</h2>
-			<code id="inorder-list"></code>
-		</InfoPanel>
-		<InfoPanel>
-			<h2>PostOrder Representation</h2>
-			<code id="postorder-list"></code>
-		</InfoPanel>
+		<div>
+			<InfoPanel>
+				<h2><Icon name="material-symbols:arrow-warm-up-rounded" />Inserting into a Binary Tree</h2>
+				<form id="insert-form" onsubmit="return false;" method="post" name="myForm">
+					<div>
+						<label for="fname">Value you want to insert</label>
+						<input id="insert-form-input" type="text" name="fname" placeholder="Input any integer" required />
+					</div>
+					<input class="submit-button" type="submit" value="Insert">
+				</form>
+			</InfoPanel>
+			<InfoPanel>
+				<h2><Icon name="material-symbols:arrow-cool-down-rounded" />Removing from a Binary Tree</h2>
+				<form id="insert-form" onsubmit="return false;" method="post" name="myForm">
+					<div>
+						<label for="fname">Value you want to remove</label>
+						<input id="insert-form-input" type="text" name="fname" placeholder="Input any integer that is in the existing tree" required />
+					</div>
+					<input class="submit-button" type="submit" value="Insert">
+				</form>
+			</InfoPanel>
+			<InfoPanel>
+				<h2>PreOrder Representation</h2>
+				<code id="preorder-list"></code>
+				<Button>Preorder Traversals</Button>
+			</InfoPanel>
+			<InfoPanel>
+				<h2>InOrder Representation</h2>
+				<code id="inorder-list"></code>
+			</InfoPanel>
+			<InfoPanel>
+				<h2>PostOrder Representation</h2>
+				<code id="postorder-list"></code>
+			</InfoPanel>
+		</div>
 	</main>
 </Layout>
 
@@ -45,4 +59,53 @@ import Button from '../components/button.astro';
 		font-size: 20px;
 		line-height: 1.6;
 	}
+	main div {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+	form div {
+		display: flex;
+		flex-direction: column;
+		background-color: var(--background);
+		padding: 20px;
+		padding-top: 10px;
+		width: 100%;
+		margin-left: -20px;
+		margin-bottom: 20px;
+		margin-top: 10px;
+	}
+	label {
+		color: var(--white);
+	}
+	input[type="text"] {
+		background-color: transparent;
+		border: none;
+		color: var(--primary);
+	}
+	input:focus {
+		outline: none;
+	}
+	[data-icon] {
+		width: 24px;
+		height: 24px;
+	}
+	.submit-button {
+        color: black;
+        font-weight: bold;
+        background-color: var(--secondary);
+		border: none;
+        border-radius: var(--border-radius);
+        width: 30%;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        transition-duration: 0.4s;
+        transition-timing-function: ease-in-out;
+    }
+    .submit-button:hover {
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        cursor: pointer;
+    }
 </style>

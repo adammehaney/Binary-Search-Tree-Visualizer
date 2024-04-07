@@ -63,7 +63,7 @@ const canvas = document.getElementById("main-canvas") as HTMLCanvasElement;
 		ctx.fillStyle = "#000000ff";
 		ctx.textAlign = "center";
 		ctx.textBaseline = "middle";
-		ctx.font = "20px system-ui, sans-serif"
+		ctx.font = "20px 'Manrope Variable', sans-serif"
 		ctx.fillText(rootValue.toString(), position.x, position.y);
 
 		ctx.fillStyle = "white";
@@ -153,7 +153,7 @@ const canvas = document.getElementById("main-canvas") as HTMLCanvasElement;
 				insert(tree.getRight(), value)
 			}
 		} else {
-			if (tree.getLeft() === null && tree.getRight() === null) {
+			if (tree.getLeft() === null) {
 				tree.insertLeft(value);
 			} else {
 				insert(tree.getLeft(), value)
@@ -210,15 +210,21 @@ const canvas = document.getElementById("main-canvas") as HTMLCanvasElement;
 			ctx.fillStyle = "white";
 			ctx.strokeStyle = "#fca311ff";
 	
-			var tree = new BinaryTree(1);
-			tree.insertLeft(2);
-			tree.insertRight(7);
-			tree.getLeft().insertLeft(3);
-			tree.getLeft().insertRight(6);
-			tree.getLeft().getLeft().insertLeft(4);
-			tree.getLeft().getLeft().insertRight(5);
-			tree.getRight().insertLeft(8);
-			tree.getRight().insertRight(9);
+			// var tree = new BinaryTree(1);
+			// tree.insertLeft(2);
+			// tree.insertRight(7);
+			// tree.getLeft().insertLeft(3);
+			// tree.getLeft().insertRight(6);
+			// tree.getLeft().getLeft().insertLeft(4);
+			// tree.getLeft().getLeft().insertRight(5);
+			// tree.getRight().insertLeft(8);
+			// tree.getRight().insertRight(9);
+
+			var tree = new BinaryTree(100);
+			tree.insertLeft(20);
+			tree.insertRight(500);
+			tree.getLeft().insertLeft(10);
+			tree.getLeft().insertRight(30);
 	
 			updateTraversals(tree);
 	

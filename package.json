@@ -11,7 +11,12 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
+    "@astrojs/svelte": "^5.3.0",
+    "@fontsource-variable/manrope": "^5.0.19",
+    "@iconify-json/material-symbols": "^1.1.76",
     "astro": "^4.5.16",
+    "astro-icon": "^1.1.0",
+    "svelte": "^4.2.12",
     "typescript": "^5.4.4"
   }
 }
