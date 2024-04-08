@@ -13,10 +13,12 @@ const canvas = document.getElementById("main-canvas") as HTMLCanvasElement;
 		private root: number;
 		private left: any;
 		private right: any;
+		private parent: any;
 		constructor (root: number) {
 			this.root = root;
 			this.left = null;
 			this.right = null;
+			this.parent = null;
 		}
 
 		getLeft() {
@@ -28,33 +30,45 @@ const canvas = document.getElementById("main-canvas") as HTMLCanvasElement;
 		getRoot() {
 			return this.root;
 		}
+		getParent() {
+			return this.parent;
+		}
 
 		setLeft(node: BinaryTree) {
 			this.left = node;
+			this.left.setParent(this);
 		}
 		setRight(node: BinaryTree) {
 			this.right = node;
+			this.right.setParent(this);
 		}
 		setRoot(num: number) {
 			this.root = num;
+		}
+		setParent(node: BinaryTree) {
+			this.parent = node;
+		}
+
+		removeChild(node: BinaryTree) {
+			if (this.left && node.getRoot() === this.left.getRoot()) {
+				this.left = null;
+			} else if (this.right && node.getRoot() === this.right.getRoot()) {
+				this.right = null;
+			}
 		}
 
 		insertLeft(num: number) {
 			if (this.left === null) {
 				this.left = new BinaryTree(num);
-			} else {
-				const tree = new BinaryTree(num);
-				tree.left = this.left;
-				this.left = tree;
+
+				this.left.setParent(this);
 			}
 		}
 		insertRight(num: number) {
 			if (this.right === null) {
 				this.right = new BinaryTree(num);
-			} else {
-				const tree = new BinaryTree(num);
-				tree.right = this.right;
-				this.right = tree;
+
+				this.right.setParent(this);
 			}
 		}
 	}
@@ -147,35 +161,40 @@ const canvas = document.getElementById("main-canvas") as HTMLCanvasElement;
 	}
 	function insert(tree: BinaryTree, value: number) {
 		if (value > tree.getRoot()) {
-			if (tree.getLeft() === null && tree.getRight() === null) {
+			if ((tree.getLeft() === null && tree.getRight() === null) || tree.getRight() === null) {
 				tree.insertRight(value);
-			} else {
-				insert(tree.getRight(), value)
+			} else if (tree.getRight()) {
+				insert(tree.getRight(), value);
 			}
 		} else {
 			if (tree.getLeft() === null) {
 				tree.insertLeft(value);
 			} else {
-				insert(tree.getLeft(), value)
+				insert(tree.getLeft(), value);
 			}
-		}
-	}
-	function deepRight(tree: BinaryTree) {
-		if (tree.getRight()) {
-			return deepRight(tree.getRight())
-		} else {
-			return tree.getRoot()
 		}
 	}
 	function remove(tree: BinaryTree, value: number) {
 		if (tree.getRoot() === value) {
-			tree.setRoot(deepRight(tree));
-		} else {
-			if (tree.getLeft()) {
-				remove(tree.getLeft(), value)
+			if (tree.getLeft() === null && tree.getRight() === null) {
+				tree.getParent().removeChild(tree);
+			} else if (tree.getLeft() === null && tree.getRight()) {
+				tree.setRoot(tree.getRight().getRoot());
+				tree.removeChild(tree.getRight());
+			} else if (tree.getRight() == null && tree.getLeft()) {
+				tree.setRoot(tree.getLeft().getRoot());
+				tree.removeChild(tree.getLeft());
+			} else {
+				let minimum = minRoot(tree.getRight())
+				remove(tree, minimum);
+				tree.setRoot(minimum);
 			}
+		} else {
 			if (tree.getRight()) {
-				remove(tree.getRight(), value)
+				remove(tree.getRight(), value);
+			}
+			if (tree.getLeft()) {
+				remove(tree.getLeft(), value);
 			}
 		}
 	}
@@ -247,9 +266,6 @@ const canvas = document.getElementById("main-canvas") as HTMLCanvasElement;
 	
 			updateTraversals(tree);
 	
-			console.log("MIN", minRoot(tree));
-			console.log("MAX", maxRoot(tree));
-	
 			drawTree(ctx, tree, canvas.width, scale);
 
 			var insertNumber = document.getElementById('insert-form-input') as HTMLInputElement;
@@ -258,18 +274,15 @@ const canvas = document.getElementById("main-canvas") as HTMLCanvasElement;
 			var removeNumber = document.getElementById('remove-form-input') as HTMLInputElement;
 			var removeNumberForm = document.getElementById('remove-form') as HTMLElement;
 
-			// if (numberForm.addEventListener){
-				
-			// }
 			insertNumberForm.addEventListener("submit", function (){
-				console.log(insertNumber.value);
+				ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 				insert(tree, parseInt(insertNumber.value))
 				drawTree(ctx, tree, canvas.width, scale);
 				updateTraversals(tree);
 			}, false);
 
 			removeNumberForm.addEventListener("submit", function (){
-				console.log(removeNumber.value);
+				ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 				remove(tree, parseInt(removeNumber.value))
 				drawTree(ctx, tree, canvas.width, scale);
 				updateTraversals(tree);
