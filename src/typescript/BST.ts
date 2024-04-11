@@ -281,7 +281,7 @@ function updateTraversals(tree: BinaryTree) {
 }
 
 function updateCanvasProperties(ctx: CanvasRenderingContext2D) {
-	canvas.style.width = '50vw';
+	canvas.style.width = '100%';
 	canvas.style.height = '50vh';
 	canvas.width = canvas.offsetWidth;
 	canvas.height = canvas.offsetHeight;
