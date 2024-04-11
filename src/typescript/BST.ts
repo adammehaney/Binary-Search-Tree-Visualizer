@@ -48,6 +48,9 @@ const canvas = document.getElementById("main-canvas") as HTMLCanvasElement;
 		setParent(node: BinaryTree) {
 			this.parent = node;
 		}
+		clearParent() {
+			this.parent = null;
+		}
 
 		removeChild(node: BinaryTree) {
 			if (this.left && node.getRoot() === this.left.getRoot()) {
@@ -55,6 +58,11 @@ const canvas = document.getElementById("main-canvas") as HTMLCanvasElement;
 			} else if (this.right && node.getRoot() === this.right.getRoot()) {
 				this.right = null;
 			}
+		}
+
+		removeAllChildren() {
+			this.left = null;
+			this.right = null;
 		}
 
 		insertLeft(num: number) {
@@ -182,8 +190,26 @@ const canvas = document.getElementById("main-canvas") as HTMLCanvasElement;
 				tree.setRoot(tree.getRight().getRoot());
 				tree.removeChild(tree.getRight());
 			} else if (tree.getRight() == null && tree.getLeft()) {
-				tree.setRoot(tree.getLeft().getRoot());
-				tree.removeChild(tree.getLeft());
+				let new_left = tree.getLeft().getLeft();
+				let new_right = tree.getLeft().getRight();
+
+				let new_root = tree.getLeft().getRoot() || tree.getRoot();
+
+				console.log(new_root);
+				
+				tree.setRoot(new_root);
+				if (new_right) {
+					tree.setRight(new_right);
+				} else {
+					tree.removeAllChildren();
+				}
+				
+				if (new_left) {
+					tree.setLeft(new_left);
+				} else {
+					tree.removeAllChildren();
+				}
+				tree.clearParent();
 			} else {
 				let minimum = minRoot(tree.getRight())
 				remove(tree, minimum);
@@ -212,14 +238,14 @@ const canvas = document.getElementById("main-canvas") as HTMLCanvasElement;
 				drawNode(ctx, tree.getLeft().getRoot(), leftPosition);
 				connectPoints(ctx, rootPosition, leftPosition);
                 drawTree(ctx, tree.getLeft(), canvasWidth, scale, i + 1, leftPosition);
-            }
+			}
             if (tree.getRight()) {
                 let rightPosition = new Vector2D(rootPosition.x + (100 / (i + 1)) * scale, rootPosition.y + 50);
 
 				drawNode(ctx, tree.getRight().getRoot(), rightPosition);
 				connectPoints(ctx, rootPosition, rightPosition);
                 drawTree(ctx, tree.getRight(), canvasWidth, scale, i + 1, rightPosition);
-            }
+			}
         }
     }
 	function updateTraversals(tree: BinaryTree) {
