@@ -33,9 +33,18 @@ import { Icon } from 'astro-icon/components'
 				</form>
 			</InfoPanel>
 			<InfoPanel>
+				<h2>Generate Random Binary Tree</h2>
+				<form id="random-form" onsubmit="return false;" method="post" name="myForm2">
+					<div>
+						<label for="fname">Number of nodes (max 20)</label>
+						<input id="random-form-input" type="text" name="fname" placeholder="Input any integer" required />
+					</div>
+					<input class="submit-button" type="submit" value="Random">
+				</form>
+			</InfoPanel>
+			<InfoPanel>
 				<h2>PreOrder Representation</h2>
 				<code id="preorder-list"></code>
-				<Button>Preorder Traversals</Button>
 			</InfoPanel>
 			<InfoPanel>
 				<h2>InOrder Representation</h2>
