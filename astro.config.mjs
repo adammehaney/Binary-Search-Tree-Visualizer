@@ -9,5 +9,8 @@ import robotsTxt from "astro-robots-txt";
 export default defineConfig({
   // site: 'https://adammehaney.github.io',
   // base: 'Binary-Search-Tree-Visualizer',
+  build: {
+    assets: '.astro'
+  },
   integrations: [icon(), svelte(), sitemap(), robotsTxt()]
 });
