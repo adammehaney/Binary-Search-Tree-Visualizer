@@ -1,54 +1,24 @@
-# Astro Starter Kit: Basics
+# Binary Search Tree Visualizer
+<img src="src/images/favicon.svg" alt="logo" style="width:200px;"/>
 
-```sh
-npm create astro@latest -- --template basics
-```
+<hr>
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+[![Deploy to GitHub Pages](https://github.com/adammehaney/Binary-Search-Tree-Visualizer/actions/workflows/deploy.yml/badge.svg)](https://github.com/adammehaney/Binary-Search-Tree-Visualizer/actions/workflows/deploy.yml)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+This website provides a simple way to visualize a Binary Search Tree for personal projects, education, and more!
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## Features
+### Current Features
+- Add values to a binary search tree
+- Delete values from a binary search tree
+- Generate random binary search trees
+- See a preorder, postorder, or inorder list of a binary search tree
 
-## 🚀 Project Structure
+### Possible Future Features
+- Exporting binary search trees in various ways
+- Better explanations for inorder, preorder, postorder, adding, removing, etc.
+- Animations when editing trees
+- Expanded visualizations of preorder, postorder, and inorder
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## How to Export
+As of now, you can right click on the tree and save it as an image in a browser of your choice.
