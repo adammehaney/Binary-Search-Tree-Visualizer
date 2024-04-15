@@ -61,8 +61,8 @@ import { Icon } from 'astro-icon/components'
 
 <style>
 	main div {
-		display: flex;
-		flex-direction: column;
+		display: grid;
+		grid-template-columns: 6fr 6fr;
 		gap: 20px;
 	}
 	form div {
@@ -109,4 +109,10 @@ import { Icon } from 'astro-icon/components'
         background: linear-gradient(90deg, var(--primary), var(--secondary));
         cursor: pointer;
     }
+	@media screen and (max-width: 708px) {
+		main div {
+			display: flex;
+			flex-direction: column;
+		}
+	}
 </style>

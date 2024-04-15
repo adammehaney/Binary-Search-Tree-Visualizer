@@ -1,5 +1,6 @@
 ---
 import '@fontsource-variable/manrope';
+import Favicon from '/src/images/favicon.svg'
 
 interface Props {
 	title: string;
@@ -14,11 +15,12 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content="Easily visualize, randomly generate, add to, remove from a binary search tree. See preorder, inorder, and postorder lists of your binary search tree." />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg" href={Favicon.src} />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="keywords" content="Binary Search Tree BST Balanced Set Search Insert Delete Adam Mehaney Predecessor Successor Inorder Data Structure Algorithm Visualization Online Learning Tutorial Open Source">
 		<title>{title}</title>
 		<script src="../typescript/BST.ts"></script>
+		<meta name="google-site-verification" content="XQkIf1w-ZpNZNAPfaG-X9BhPLxMQeYv-75eDrQ_dmGE" />
 	</head>
 	<body>
 		<slot />

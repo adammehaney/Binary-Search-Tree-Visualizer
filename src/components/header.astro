@@ -1,11 +1,17 @@
 ---
 import GithubLogo from '/src/images/github-mark-white.svg'
+import Favicon from '/src/images/favicon.svg'
 ---
 
 <header>
-    <div>
-        <h1>Binary Search Tree</h1>
-        <h2>Visualizer</h2>
+    <div class="title">
+        <div>
+            <img src={Favicon.src} alt="Logo">
+        </div>
+        <div>
+            <h1>Binary Search Tree</h1>
+            <h2>Visualizer</h2>
+        </div>
     </div>
     <div>
         <a href="https://github.com/adammehaney/Binary-Search-Tree-Visualizer" target="_blank"><img src={GithubLogo.src} alt="Github Logo" width="30px" height="30px"></a>
@@ -18,5 +24,31 @@ import GithubLogo from '/src/images/github-mark-white.svg'
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+    }
+    .title {
+        display: flex;
+        flex-direction: row;
+        align-items: end;
+        gap: 20px;
+    }
+    .title div img {
+        height: 4em;
+    }
+    @media screen and (max-width: 600px) {
+        .title {
+            flex-direction: column;
+            align-items: start;
+        }
+        header {
+            flex-direction: column;
+            align-items: start;
+            gap: 20px;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+        }
     }
 </style>
