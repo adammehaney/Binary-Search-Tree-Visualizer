@@ -7,10 +7,10 @@ import robotsTxt from "astro-robots-txt";
 
 // https://astro.build/config
 export default defineConfig({
-  // site: 'https://adammehaney.github.io',
-  // base: 'Binary-Search-Tree-Visualizer',
+  site: 'https://adammehaney.github.io',
+  base: 'Binary-Search-Tree-Visualizer',
   build: {
-    assets: '.astro'
+    assets: 'astro'
   },
   integrations: [icon(), svelte(), sitemap(), robotsTxt()]
 });
