@@ -12,10 +12,11 @@ const { title } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content="Easily visualize, randomly generate, add to, remove from a binary search tree. See preorder, inorder, and postorder lists of your binary search tree." />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="keywords" content="Binary Search Tree BST Balanced Set Search Insert Delete Adam Mehaney Predecessor Successor Inorder Data Structure Algorithm Visualization Online Learning Tutorial Open Source">
 		<title>{title}</title>
 		<script src="../typescript/BST.ts"></script>
 	</head>
@@ -40,7 +41,15 @@ const { title } = Astro.props;
 	html, input {
 		font-family: 'Manrope Variable', sans-serif;
 		background: var(--background);
-		/* background-size: 224px; */
+	}
+	body {
+		margin: auto;
+		padding: 1rem;
+		width: 800px;
+		max-width: calc(100% - 2rem);
+		color: white;
+		font-size: 20px;
+		line-height: 1.6;
 	}
 	code {
 		font-family:

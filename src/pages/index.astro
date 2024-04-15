@@ -2,14 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import BST from '../components/BST.astro';
 import InfoPanel from '../components/infopanel.astro';
-import Button from '../components/button.astro';
+import Header from '../components/header.astro'
+import Footer from '../components/footer.astro'
 import { Icon } from 'astro-icon/components'
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Binary Search Tree Visualizer">
+	<Header />
 	<main>
-		<h1>Binary Search Tree</h1>
-		<h2>Visualizer</h2>
 		<BST />
 		<div>
 			<InfoPanel>
@@ -56,18 +56,10 @@ import { Icon } from 'astro-icon/components'
 			</InfoPanel>
 		</div>
 	</main>
+	<Footer />
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
 	main div {
 		display: flex;
 		flex-direction: column;
