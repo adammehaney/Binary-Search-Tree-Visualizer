@@ -1,7 +1,9 @@
 {
-  "name": "",
+  "name": "binary-search-tree-visualizer",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "homepage": "https://adammehaney.github.io/Binary-Search-Tree-Visualizer/",
+  "license": "MIT",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -20,5 +22,12 @@
     "astro-robots-txt": "^1.0.0",
     "svelte": "^4.2.12",
     "typescript": "^5.4.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adammehaney/Binary-Search-Tree-Visualizer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adammehaney/Binary-Search-Tree-Visualizer/issues"
   }
 }
