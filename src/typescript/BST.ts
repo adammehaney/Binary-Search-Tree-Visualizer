@@ -337,6 +337,8 @@ function buildCanvas() {
 				drawTree(ctx, globalTree, canvas.width, scale);
 				updateTraversals(globalTree);
 			}
+
+			insertNumber.value = "";
 		}, false);
 
 		removeNumberForm.addEventListener("submit", function () {
@@ -348,6 +350,8 @@ function buildCanvas() {
 				drawTree(ctx, globalTree, canvas.width, scale);
 				updateTraversals(globalTree);
 			}
+
+			removeNumber.value = "";
 		}, false);
 
 		randomNumberForm.addEventListener("submit", function () {
@@ -374,6 +378,8 @@ function buildCanvas() {
 				drawTree(ctx, tree, canvas.width, scale);
 				updateTraversals(tree);
 			}
+
+			randomNumber.value = "";
 		}, false);
 	}
 }
