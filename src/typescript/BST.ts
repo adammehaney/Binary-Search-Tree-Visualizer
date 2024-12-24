@@ -93,6 +93,8 @@ class BinaryTree {
 	}
 }
 
+var globalTree: BinaryTree;
+
 function drawNode(ctx: CanvasRenderingContext2D, rootValue: number, position: Vector2D) {
 	ctx.fillStyle = "#000000ff";
 	ctx.textAlign = "center";
@@ -301,15 +303,21 @@ function buildCanvas() {
 
 		var scale = 1;
 
-		var tree = new BinaryTree(100);
-		tree.insertLeft(20);
-		tree.insertRight(500);
-		tree.getLeft().insertLeft(10);
-		tree.getLeft().insertRight(30);
+		console.log(globalTree);
 
-		updateTraversals(tree);
+		if (globalTree == null) {
+			var tree = new BinaryTree(100);
+			tree.insertLeft(20);
+			tree.insertRight(500);
+			tree.getLeft().insertLeft(10);
+			tree.getLeft().insertRight(30);
 
-		drawTree(ctx, tree, canvas.width, scale);
+			globalTree = tree;
+		}
+
+		updateTraversals(globalTree);
+
+		drawTree(ctx, globalTree, canvas.width, scale);
 
 		var insertNumber = document.getElementById('insert-form-input') as HTMLInputElement;
 		var insertNumberForm = document.getElementById('insert-form') as HTMLElement;
@@ -325,9 +333,9 @@ function buildCanvas() {
 
 			if (userInput && userInput < 1000) {
 				ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-				insert(tree, userInput);
-				drawTree(ctx, tree, canvas.width, scale);
-				updateTraversals(tree);
+				insert(globalTree, userInput);
+				drawTree(ctx, globalTree, canvas.width, scale);
+				updateTraversals(globalTree);
 			}
 		}, false);
 
@@ -336,9 +344,9 @@ function buildCanvas() {
 
 			if (userInput) {
 				ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-				remove(tree, userInput);
-				drawTree(ctx, tree, canvas.width, scale);
-				updateTraversals(tree);
+				remove(globalTree, userInput);
+				drawTree(ctx, globalTree, canvas.width, scale);
+				updateTraversals(globalTree);
 			}
 		}, false);
 
@@ -350,6 +358,7 @@ function buildCanvas() {
 				let first = randomNums[0]
 	
 				tree = new BinaryTree(first);
+				globalTree = tree;
 	
 				for (let randomNum of randomNums) {
 					insert(tree, randomNum);
